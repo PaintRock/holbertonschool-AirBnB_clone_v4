@@ -1,32 +1,34 @@
-$// Wait for the document to be fully loaded
+#!/usr/bin/node
+// Script that listen for changes on each input checkbox tag
+
+// This function ensures the DOM is fully loaded before executing the script
 $(document).ready(function() {
-    // Get the status from the API endpoint
-    $.get('http://0.0.0.0:5001/api/v1/status/', function(data) {
-        if (data.status === 'OK') {
-            // Add the 'available' class to div#api_status
-            $('#api_status').addClass('available');
-        } else {
-            // Remove the 'available' class from div#api_status
-            $('#api_status').removeClass('available');
-        }
+    const nameAmenity = [];
+
+    // Listen for changes on each checkbox
+    $('input:checkbox').click(function () {
+      // checkbox was checked
+        if ($(this).is(":checked")) {
+        nameAmenity.push($(this).attr('data-name'));
+    // if the checkbox is unchecked, you must remove the Amenity ID from the variable
+    } else {
+        const nameIndex = nameAmenity.indexOf($(this).attr('data-name'));
+        nameAmenity.splice(nameIndex, 1);
+    }
+    // update the h4 tag inside the div Amenities with the list of Amenities checked
+    $('.amenities h4').text(nameAmenity.join(', '));
     });
-
-    // Store the selected amenity IDs and names
-    const amenityIds = {};
-
-    // Listen for changes on each input checkbox tag with class 'amenity-checkbox'
-    $('.amenity-checkbox').change(function() {
-        const amenityId = $(this).data('id');
-        const amenityName = $(this).data('name');
-
-        if ($(this).prop('checked')) {
-            amenityIds[amenityId] = amenityName; // Add to the selected amenities
+});
+$(document).ready(function() {
+    // execute a GET request to Status API
+    $.get('http://0.0.0.0:5001/api/v1/status/', function(data) {
+        // if the request is successful
+        if (data.status === 'OK') {
+            // add the class available to the DIV#api_status
+            $('DIV#api_status').addClass('available');
         } else {
-            delete amenityIds[amenityId]; // Remove from the selected amenities
+            // remove the class available to the DIV#api_status
+            $('DIV#api_status').removeClass('available');
         }
-
-        // Update the h4 tag with the list of selected amenities
-        const selectedAmenities = Object.values(amenityIds).join(', ');
-        $('.amenities h4').text('Amenities: ' + selectedAmenities);
     });
 });

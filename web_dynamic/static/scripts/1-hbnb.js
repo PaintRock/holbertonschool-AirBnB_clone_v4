@@ -1,22 +1,22 @@
 
-#!/usr/bin/node 
+#!/usr/bin/node
+// Script that listen for changes on each input checkbox tag
 
+// This function ensures the DOM is fully loaded before executing the script
 $(document).ready(function() {
-    const amenityIds = {}; // To store selected amenity IDs
+    const nameAmenity = [];
 
-    // Listen for changes on each input checkbox tag
-    $('.amenity-checkbox').change(function() {
-        const amenityId = $(this).data('id');
-        const amenityName = $(this).data('name');
-
-        if ($(this).prop('checked')) {
-            amenityIds[amenityId] = amenityName; // Add to the selected amenities
-        } else {
-            delete amenityIds[amenityId]; // Remove from the selected amenities
-        }
-
-        // Update the h4 tag with the list of selected amenities
-        const selectedAmenities = Object.values(amenityIds).join(', ');
-        $('.amenities h4').text('Amenities: ' + selectedAmenities);
+    // Listen for changes on each checkbox
+    $('input:checkbox').click(function () {
+      // checkbox was checked
+        if ($(this).is(":checked")) {
+        nameAmenity.push($(this).attr('data-name'));
+    // if the checkbox is unchecked, you must remove the Amenity ID from the variable
+    } else {
+        const nameIndex = nameAmenity.indexOf($(this).attr('data-name'));
+        nameAmenity.splice(nameIndex, 1);
+    }
+    // update the h4 tag inside the div Amenities with the list of Amenities checke
+     $('.amenities h4').text(nameAmenity.join(', '));
     });
 });
