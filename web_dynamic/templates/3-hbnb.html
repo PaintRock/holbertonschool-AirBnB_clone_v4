@@ -2,21 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="../static/styles/4-common.css?cache_id={{cache_id}}">
+    <link rel="stylesheet" type="text/css" href="../static/styles/4-common.css?cache_id={{cache_id}}">
     <link rel="stylesheet" type="text/css" href="../static/styles/3-header.css?cache_id={{cache_id}}">
     <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css?cache_id={{cache_id}}">
     <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css?cache_id={{cache_id}}">
     <link type="text/css" rel="stylesheet" href="../static/styles/8-places.css?cache_id={{cache_id}}">
     <link rel="icon" href="../static/images/icon.png?cache_id={{cache_id}}" />
-    <!-- Import jquery -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>	
-	<script type="text/javascript" src="../static/scripts/2-hbnb.js?cache_id={{cache_id}}"></script>
-	<title>HBnB</title>
+	     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		 <script src="../static/scripts/3-hbnb.js?cache_id={{cache_id}}"></script>
+    <title>HBnB</title>
   </head>
   <body>
     <header>
       <div class="logo"></div>
-	  <div id="api_status" class="api-status"></div>
+	  <div id="api_status" class="available"></div>
     </header>
     <div class="container">
       <section class="filters">
@@ -24,15 +23,15 @@
 	  <h3>States</h3>
 	  <h4>&nbsp;</h4>
 	  <div class="popover">
-	    {% for state in states %}<ul>
-	      
+	    <ul>
+	      {% for state in states %}
 	      <li>
 		<h2>{{ state[0].name }}:</h2>
 		<ul>
 		  {% for city in state[1] %}
 		  <li>{{ city.name }}</li>
-		  
-		</ul>{% endfor %}
+		  {% endfor %}
+		</ul>
 	      </li>
 	      {% endfor %}
 	    </ul>
@@ -44,12 +43,10 @@
 	  <div class="popover">
 	    <ul>
 	      {% for amenity in amenities %}
-	      <li>
-			<label>
-				<input type="checkbox" data-name="{{ amenity_name }}" data-id="{{ amenity_id }}"> 
-				{{ amenity.name }}
-			</label>
-		</li>
+	    		<li>
+					<input type="checkbox" data-id="{{ amenity_id }}" data-name="{{ amenity_name }}">
+					{{ amenity.name }}
+				</li>
 	      {% endfor %}
 	    </ul>
 	  </div>
