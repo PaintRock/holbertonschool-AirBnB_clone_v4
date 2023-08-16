@@ -19,10 +19,10 @@ header #api_status {
     border-radius: 50%; /* To create a circular shape */
     background-color: #cccccc;
     display: flex;    
-    transform: translateY(-50%); /* To adjust vertical alignment */
+    justify-content: center; /* To adjust vertical alignment */
     align-items: center;
     }
-    
+
 #api_status.available {
     background-color: #ff545f;
 }
