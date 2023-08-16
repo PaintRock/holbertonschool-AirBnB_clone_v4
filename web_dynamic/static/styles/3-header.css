@@ -10,7 +10,7 @@ header .logo {
     height: 100%;
 }
 /* Add the necessary styles for the API status div */
-.api_status {
+header #api_status {
     width: 40px;
     height: 40px;
     background-color: #cccccc;
