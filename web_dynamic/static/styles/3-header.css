@@ -11,17 +11,18 @@ header .logo {
 }
 /* Add the necessary styles for the API status div */
 header #api_status {
-    width: 40px;
-    height: 40px;
-    background-color: #cccccc;
-    border-radius: 50%; /* To create a circular shape */
     position: absolute; /* To position the element */
     top: 15px; /* To vertically center */
     right: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* To create a circular shape */
+    background-color: #cccccc;
+    display: flex;    
     transform: translateY(-50%); /* To adjust vertical alignment */
-    align-items: right;
-    center: vertically;
+    align-items: center;
     }
-.api_status.available {
+    
+#api_status.available {
     background-color: #ff545f;
 }
