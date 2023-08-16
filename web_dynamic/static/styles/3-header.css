@@ -9,19 +9,19 @@ header .logo {
     left: 20px;
     height: 100%;
 }
-header #api_status {
-    position: absolute;
-    top: 15px;
-    right: 30px;
+/* Add the necessary styles for the API status div */
+.api_status {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    background-color: #CCCCCC;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#api_status.available {
+    background-color: #cccccc;
+    border-radius: 50%; /* To create a circular shape */
+    position: absolute; /* To position the element */
+    top: 15px; /* To vertically center */
+    right: 30px;
+    transform: translateY(-50%); /* To adjust vertical alignment */
+    align-items: right;
+    center: vertically;
+    }
+.api_status.available {
     background-color: #ff545f;
 }
