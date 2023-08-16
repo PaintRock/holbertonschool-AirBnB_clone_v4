@@ -16,10 +16,12 @@ header .logo {
     background-color: #cccccc;
     border-radius: 50%; /* To create a circular shape */
     position: absolute; /* To position the element */
-    top: 50%; /* To vertically center */
+    top: 15px; /* To vertically center */
     right: 30px;
     transform: translateY(-50%); /* To adjust vertical alignment */
-}
-.available {
+    align-items: right;
+    center: vertically;
+    }
+.api_status.available {
     background-color: #ff545f;
 }
